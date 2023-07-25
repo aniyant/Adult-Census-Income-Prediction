@@ -1,4 +1,3 @@
-tensorflow
 dvc
 pandas
 notebook

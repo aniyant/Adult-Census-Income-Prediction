@@ -1,2 +1,2 @@
-### DeepLearning Project Template
-This is a Deep learning project template. Anyone can use this template to setup project structure quickly, logger and common utilities functions are already added in it.
+### Adult Census Income Prediction Project
+This is a Machinle learning project. A Machinel Model is created which can predict and classify the adult income based on the given features.
