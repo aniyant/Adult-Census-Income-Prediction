@@ -9,7 +9,8 @@ def main():
     data_ingestion_config = config.get_data_ingestion_config()
     data_ingestion = DataIngestion(config=data_ingestion_config)
     data_ingestion.download_file()
-    data_ingestion.unzip_and_save()
+    target_file_path = data_ingestion.unzip_and_save()
+    data_ingestion.split_data_into_train_test(target_filepath=target_file_path)
 
 if __name__ == '__main__':
     try:

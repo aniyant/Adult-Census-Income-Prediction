@@ -4,9 +4,11 @@ notebook
 numpy
 matplotlib
 seaborn
+scikit-learn
 python-box==6.0.2
 pyYAML
 tqdm
+gdown
 ensure==1.0.2
 joblib
 

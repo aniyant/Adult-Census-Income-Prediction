@@ -1,0 +1,18 @@
+columns:
+  age: int64
+  workclass: object
+  fnlwgt: int64
+  education: object
+  education-num: int64
+  marital-status: object
+  occupation: object
+  relationship: object
+  race : object
+  sex : object
+  capital-gain: int64
+  capital-loss: int64
+  hours-per-week: int64
+  country: object
+  salary: object
+
+target_column: salary
