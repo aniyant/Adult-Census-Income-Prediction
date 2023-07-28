@@ -1,0 +1,1 @@
+from adultIncomeClassifier.config.configuration import ConfigurationManager

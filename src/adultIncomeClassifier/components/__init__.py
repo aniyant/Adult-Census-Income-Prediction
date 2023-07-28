@@ -1,0 +1,1 @@
+from adultIncomeClassifier.components.data_ingestion import DataIngestion
