@@ -7,8 +7,8 @@ columns:
   marital-status: object
   occupation: object
   relationship: object
-  race : object
-  sex : object
+  race: object
+  sex: object
   capital-gain: int64
   capital-loss: int64
   hours-per-week: int64
@@ -16,3 +16,22 @@ columns:
   salary: object
 
 target_column: salary
+
+number_of_cols: 15
+
+numerical_columns:
+  - age
+  - fnlwgt
+  - capital-gain
+  - capital-loss
+
+categorical_columns:
+  - workclass
+  - education
+  - marital-status
+  - occupation
+  - relationship
+  - race
+  - sex
+  - hours-per-week
+  - country

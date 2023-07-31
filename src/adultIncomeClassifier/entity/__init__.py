@@ -1,4 +1,8 @@
 from adultIncomeClassifier.entity.config_entity import (
     DataIngestionConfig, 
-    DataValidationConfig
+    DataValidationConfig,
+    DataTransformationConfig
+)
+from adultIncomeClassifier.entity.artifact_entity import (
+    DataIngestionArtifact
 )

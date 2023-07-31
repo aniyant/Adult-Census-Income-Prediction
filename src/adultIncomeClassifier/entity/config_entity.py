@@ -13,5 +13,21 @@ class DataIngestionConfig:
 
 @dataclass(frozen=True)
 class DataValidationConfig:
+    root_dir: Path
     schema_file_path: Path
+    train_data_file_path: Path
+    test_data_file_path: Path
     report_file_path: Path
+    report_page_file_path: Path
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    schema_file_path: Path
+    train_data_file_path: Path
+    test_data_file_path: Path
+    transformed_train_path: Path
+    transformed_test_path: Path
+    preprocessed_object_file_path: Path
+    
+

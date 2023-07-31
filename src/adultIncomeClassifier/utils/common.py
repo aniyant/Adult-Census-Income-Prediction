@@ -3,7 +3,7 @@ from box.exceptions import BoxValueError
 import yaml
 from adultIncomeClassifier import logger
 import json
-import joblib
+import dill
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
@@ -69,26 +69,29 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 @ensure_annotations
-def save_bin(data: Any, path: Path):
-    """save binary file
-    Args:
-        data (Any): data to be saved as binary
-        path (Path): path to binary file
+def save_object(object,file_path:Path):
     """
-    joblib.dump(value=data, filename=path)
-    logger.info(f"binary file saved at: {path}")
+    file_path: str
+    obj: Any sort of object
+    """
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, "wb") as file_obj:
+            dill.dump(object, file_obj)
+    except Exception as e:
+        raise e
 
 @ensure_annotations
-def load_bin(path: Path) -> Any:
-    """load binary data
-    Args:
-        path (Path): path to binary file
-    Returns:
-        Any: object stored in the file
+def load_object(file_path:Path):
     """
-    data = joblib.load(path)
-    logger.info(f"binary file loaded from: {path}")
-    return data
+    file_path: str
+    """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise e
 
 @ensure_annotations
 def get_size(path: Path) -> str:

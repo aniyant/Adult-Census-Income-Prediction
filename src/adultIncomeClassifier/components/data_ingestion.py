@@ -2,6 +2,7 @@ import os
 import gdown
 from zipfile import ZipFile
 from adultIncomeClassifier.entity import DataIngestionConfig
+from adultIncomeClassifier.entity import DataIngestionArtifact
 from adultIncomeClassifier import logger
 from adultIncomeClassifier.utils import get_size
 from pathlib import Path
@@ -71,11 +72,10 @@ class DataIngestion:
                 train_dataset = df.loc[train_index]
                 test_dataset = df.loc[test_index]
 
-            train_dataset.to_csv(self.config.train_data_file)
-            test_dataset.to_csv(self.config.test_data_file)
+            train_dataset.to_csv(self.config.train_data_file,index=False)
+            test_dataset.to_csv(self.config.test_data_file,index=False)
 
             logger.info(f"train data saved in {self.config.train_data_file}.")
             logger.info(f"test data saved in {self.config.test_data_file}.")
-        
         except Exception as e:
             raise e

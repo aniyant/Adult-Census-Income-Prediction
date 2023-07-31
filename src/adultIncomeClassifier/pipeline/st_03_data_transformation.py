@@ -1,16 +1,14 @@
 from adultIncomeClassifier.config import ConfigurationManager
-from adultIncomeClassifier.components import DataIngestion
+from adultIncomeClassifier.components import DataTransformation
 from adultIncomeClassifier import logger
 
-STAGE_NAME = "Data Ingestion Stage"
+STAGE_NAME = "Data Transformation Stage"
 
 def main():
     config = ConfigurationManager()
-    data_ingestion_config = config.get_data_ingestion_config()
-    data_ingestion = DataIngestion(config=data_ingestion_config)
-    data_ingestion.download_file()
-    target_file_path = data_ingestion.unzip_and_save()
-    data_ingestion.split_data_into_train_test(target_filepath=target_file_path)
+    data_transformation_config = config.get_data_transformation_config()
+    data_transformation = DataTransformation(config=data_transformation_config)
+    data_transformation.initiate_data_transformation()
 
 if __name__ == '__main__':
     try:

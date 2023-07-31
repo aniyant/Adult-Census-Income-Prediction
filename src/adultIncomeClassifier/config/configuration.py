@@ -4,6 +4,7 @@ from adultIncomeClassifier.utils import read_yaml, create_directories
 from adultIncomeClassifier.entity import (
     DataIngestionConfig,
     DataValidationConfig,
+    DataTransformationConfig,
 )
 
 from pathlib import Path
@@ -40,4 +41,43 @@ class ConfigurationManager:
             raise e
         
     def get_data_validation_config(self) -> DataValidationConfig:
-        pass
+
+        try:
+            config = self.config.data_validation
+
+            create_directories([config.root_dir])
+
+            data_validation_config = DataValidationConfig(
+                root_dir= config.root_dir,
+                schema_file_path= config.schema_file_path,
+                train_data_file_path= config.train_data_file_path,
+                test_data_file_path=config.test_data_file_path,
+                report_file_path=config.report_file_path,
+                report_page_file_path=config.report_page_file_path
+            )
+
+            return data_validation_config
+        
+        except Exception as e:
+            raise e
+        
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        try:
+            config = self.config.data_transformation
+
+            create_directories([config.root_dir])
+
+            data_transformation_config = DataTransformationConfig(
+                root_dir=config.root_dir,
+                schema_file_path= config.schema_file_path,
+                train_data_file_path=config.train_data_file_path,
+                test_data_file_path = config.test_data_file_path,
+                transformed_train_path=config.transformed_train_path,
+                transformed_test_path=config.transformed_test_path,
+                preprocessed_object_file_path=config.preprocessed_object_file_path
+            )
+
+            return data_transformation_config
+        except Exception as e:
+            raise e
+
