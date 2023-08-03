@@ -1,0 +1,53 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 5
+    verbose: 2
+    
+model_selection:
+  module_0:
+    class: RandomForestClassifier
+    module: sklearn.ensemble
+    params:
+      min_samples_leaf: 3
+    search_param_grid:
+      min_samples_leaf:
+        - 3
+        - 6
+
+  module_1:
+    class: LogisticRegression
+    module: sklearn.linear_model
+    params:
+      fit_intercept: True
+    search_param_grid:
+      fit_intercept:
+        - True
+        - False
+  
+  module_2:
+    class: AdaBoostClassifier
+    module: sklearn.ensemble
+    params:
+      algorithm: SAMME
+    search_param_grid:
+      algorithm:
+        - SAMME
+        - SAMME.R
+  
+  module_3:
+    class: GradientBoostingClassifier
+    module: sklearn.ensemble
+    params:
+      criterion: squared_error
+      min_samples_leaf: 1
+    search_param_grid:
+      criterion:
+        - friedman_mse
+        - squared_error
+      
+      min_samples_leaf:
+        - 1
+        - 2
+        - 3

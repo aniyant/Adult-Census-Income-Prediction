@@ -21,6 +21,16 @@ data_transformation:
   schema_file_path: configs/schema.yaml
   train_data_file_path: artifacts/data_ingestion/train.csv
   test_data_file_path: artifacts/data_ingestion/test.csv
-  transformed_train_path: artifacts/data_transformation/train.npy
-  transformed_test_path: artifacts/data_transformation/test.npy
+  transformed_train_path: artifacts/data_transformation/train.npz
+  transformed_test_path: artifacts/data_transformation/test.npz
   preprocessed_object_file_path: artifacts/data_transformation/preprocessed.pkl
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  transformed_train_path: artifacts/data_transformation/train.npz
+  transformed_test_path: artifacts/data_transformation/test.npz
+  preprocessed_pkl_file_path: artifacts/data_transformation/preprocessed.pkl
+  model_config_file_path: configs/model.yaml
+  trained_model_file_path: artifacts/model_trainer/model.pkl
+  base_accuracy: 0.6
+  model_config_file_path: configs/model.yaml

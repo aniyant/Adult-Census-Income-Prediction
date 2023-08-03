@@ -5,6 +5,7 @@ from adultIncomeClassifier.entity import (
     DataIngestionConfig,
     DataValidationConfig,
     DataTransformationConfig,
+    ModelTrainerConfig,
 )
 
 from pathlib import Path
@@ -81,3 +82,22 @@ class ConfigurationManager:
         except Exception as e:
             raise e
 
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        try:
+            config = self.config.model_trainer
+
+            create_directories([config.root_dir])
+
+            model_trainer_config = ModelTrainerConfig(
+                root_dir= config.root_dir,
+                transformed_train_path= config.transformed_train_path,
+                transformed_test_path= config.transformed_test_path,
+                preprocessed_pkl_file_path= config.preprocessed_pkl_file_path,
+                model_config_file_path= config.model_config_file_path,
+                trained_model_file_path= config.trained_model_file_path,
+                base_accuracy= config.base_accuracy
+            )
+
+            return model_trainer_config
+        except Exception as e:
+            raise e

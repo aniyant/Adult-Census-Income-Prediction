@@ -29,5 +29,16 @@ class DataTransformationConfig:
     transformed_train_path: Path
     transformed_test_path: Path
     preprocessed_object_file_path: Path
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    transformed_train_path: Path
+    transformed_test_path: Path
+    preprocessed_pkl_file_path: Path
+    model_config_file_path: Path
+    trained_model_file_path: Path
+    base_accuracy: float
+    model_config_file_path: Path
     
 
