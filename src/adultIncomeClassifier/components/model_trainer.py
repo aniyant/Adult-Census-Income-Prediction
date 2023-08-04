@@ -30,7 +30,8 @@ class IncomeClassifierModel:
         At last it perform prediction on transformed features
         """
         transformed_feature = self.preprocessing_object.transform(X)
-        return self.trained_model_object.predict(transformed_feature)
+        transformed_feature = transformed_feature.astype('int32')
+        return self.trained_model_object.predict(transformed_feature[:,:-1])
 
     def __repr__(self):
         return f"{type(self.trained_model_object).__name__}()"
@@ -94,6 +95,7 @@ class ModelTrainer:
             
             model_list = [model.best_model for model in grid_searched_best_model_list ]
             logger.info(f"Evaluation all trained model on training and testing dataset both")
+            logger.info(f"train:{x_train.shape},test:{x_test.shape}")
             metric_info:MetricInfoArtifact = evaluate_classification_model(model_list=model_list,X_train=x_train,y_train=y_train,X_test=x_test,y_test=y_test,base_accuracy=base_accuracy)
 
             logger.info(f"Best found model on both training and testing dataset.{metric_info.model_object}")

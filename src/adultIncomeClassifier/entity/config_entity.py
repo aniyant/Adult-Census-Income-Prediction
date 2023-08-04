@@ -41,4 +41,7 @@ class ModelTrainerConfig:
     base_accuracy: float
     model_config_file_path: Path
     
-
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    trained_model_file_path: Path

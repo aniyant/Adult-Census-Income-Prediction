@@ -1,0 +1,54 @@
+stages:
+  data_ingestion:
+    cmd: python src/adultIncomeClassifier/pipeline/st_01_data_ingestion.py
+    deps:
+      - src/adultIncomeClassifier/components/data_ingestion.py
+      - configs/config.yaml
+    outs:
+      - artifacts/data_ingestion/train.csv
+      - artifacts/data_ingestion/test.csv 
+
+  data_validation:
+    cmd: python src/adultIncomeClassifier/pipeline/st_02_data_validation.py
+    deps:
+      - src/adultIncomeClassifier/components/data_ingestion.py
+      - src/adultIncomeClassifier/components/data_validation.py
+      - configs/config.yaml
+    outs:
+      - artifacts/data_validation/report.html
+      - artifacts/data_validation/report.json
+
+  data_transformation:
+    cmd: python src/adultIncomeClassifier/pipeline/st_03_data_transformation.py
+    deps:
+      - src/adultIncomeClassifier/components/data_ingestion.py
+      - src/adultIncomeClassifier/components/data_validation.py
+      - src/adultIncomeClassifier/components/data_transformation.py
+      - configs/config.yaml
+    outs:
+      - artifacts/data_transformation/preprocessed.pkl
+      - artifacts/data_transformation/train.npz
+      - artifacts/data_transformation/test.npz
+
+  model_training:
+    cmd: python src/adultIncomeClassifier/pipeline/st_04_model_trainer.py
+    deps:
+      - src/adultIncomeClassifier/components/data_ingestion.py
+      - src/adultIncomeClassifier/components/data_validation.py
+      - src/adultIncomeClassifier/components/data_transformation.py
+      - src/adultIncomeClassifier/components/model_trainer.py
+      - configs/config.yaml
+    outs:
+      - artifacts/model_trainer/model.pkl
+
+   model_evaluation:
+    cmd: python src/adultIncomeClassifier/pipeline/st_05_model_evaluation.py
+    deps:
+      - src/adultIncomeClassifier/components/data_ingestion.py
+      - src/adultIncomeClassifier/components/data_validation.py
+      - src/adultIncomeClassifier/components/data_transformation.py
+      - src/adultIncomeClassifier/components/model_trainer.py
+      - src/adultIncomeClassifier/components/model_evaluation.py
+      - configs/config.yaml
+    outs:
+      - artifacts/model_evaluation

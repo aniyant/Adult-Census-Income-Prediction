@@ -6,6 +6,7 @@ from adultIncomeClassifier.entity import (
     DataValidationConfig,
     DataTransformationConfig,
     ModelTrainerConfig,
+    ModelEvaluationConfig
 )
 
 from pathlib import Path
@@ -96,6 +97,19 @@ class ConfigurationManager:
                 model_config_file_path= config.model_config_file_path,
                 trained_model_file_path= config.trained_model_file_path,
                 base_accuracy= config.base_accuracy
+            )
+
+            return model_trainer_config
+        except Exception as e:
+            raise e
+        
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        try:
+            config = self.config.model_evaluation
+            create_directories([config.root_dir])
+            model_trainer_config = ModelEvaluationConfig(
+                root_dir= config.root_dir
+                trained_model_file_path= config.trained_model_file_path,
             )
 
             return model_trainer_config

@@ -1,0 +1,144 @@
+<html>
+<head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+   <body>
+      <title>Adult Income Prediction</title>
+	  <div class="container">
+		<div class="row">
+
+		  <form action="/predict" method="POST">
+		  	<div class="col-sm-9">
+			 <div class="form-group  purple-border">
+				  <label for="comment">Age:</label>
+				  <input class="form-control" id="query1" name="query1" required>{{query1}}</input>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Sex:</label>
+				  <select class="form-control" id="query2" name="query2"required>{{query2}}
+              <option value=' Male'>Male</option>
+              <option value=' Female'>Female</option>
+            </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Fnlwgt:</label>
+				  <input class="form-control"id="query3" name="query3" required>{{query3}}</input>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Education:</label>
+				  <select class="form-control" id="query4" name="query4" autofocus>{{query4}}
+               <option value=' HS-grad'>HS-grad</option>
+               <option value=' Some-college'>Some-college</option>
+               <option value=' Bachelors'>Bachelors</option>
+               <option value=' Masters'>Masters</option>
+               <option value=' 11th'>11th</option>
+               <option value=' Assoc-acdm'>Assoc-acdm</option>
+               <option value=' 10th'>10th</option>
+               <option value=' 7th-8th'>7th-8th</option>
+               <option value=' Prof-school'>Prof-school</option>
+               <option value=' 9th'>9th</option>
+               <option value=' 12th'>12th</option>
+               <option value=' Doctorate'>Doctorate</option>
+               <option value=' 5th-6th'>5th-6th</option>
+               <option value=' 1st-4th'>1st-4th</option>
+               <option value=' Preschool'>Preschool</option>
+
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Marital-Status:</label>
+				  <select class="form-control" id="query5" name="query5" required>{{query5}}
+               <option value=' Married-civ-spouse'>Married-civ-spouse</option>
+               <option value=' Never-married'>Never-married</option>
+               <option value=' Divorced'>Divorced</option>
+               <option value=' Separated'>Separated</option>
+               <option value=' Widowed'>Widowed</option>
+               <option value=' Married-spouse-absent'>Married-spouse-absent</option>
+               <option value=' Married-AF-spouse'>Married-AF-spouse</option>
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Occupation:</label>
+				  <select class="form-control" id="query6" name="query6" required>{{query6}}
+               <option value=' Prof-specialty'>Prof-specialty</option>
+               <option value=' Craft-repair'>Craft-repair</option>
+               <option value=' Exec-managerial'>Exec-managerial</option>
+               <option value=' Adm-clerical'>Adm-clerical</option>
+               <option value=' Sales'>Sales</option>
+               <option value=' Other-service'>Other-service</option>
+               <option value=' Machine-op-inspct'>Machine-op-inspct</option>
+               <option value=' Transport-moving'>Transport-moving</option>
+               <option value=' Handlers-cleaners'>Handlers-cleaners</option>\
+               <option value=' Farming-fishing'>Farming-fishing</option>
+               <option value=' Tech-support'>Tech-support</option>
+               <option value=' Protective-serv'>Protective-serv</option>
+               <option value=' Priv-house-serv'>Priv-house-serv</option>
+               <option value=' Armed-Forces'>Armed-Forces</option>
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Relationship:</label>
+				  <select class="form-control" id="query7" name="query7" required>{{query7}}
+               <option value=' Husband'>Husband</option>
+               <option value=' Not-in-family'>Not-in-family</option>
+               <option value=' Own-child'>Own-child</option>
+               <option value=' Unmarried'>Unmarried</option>
+               <option value=' Wife'>Wife</option>
+               <option value=' Other-relative'>Other-relative</option>
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Race:</label>
+				  <select class="form-control" id="query8" name="query8" required>{{query8}}
+               <option value=1>White</option>
+               <option value=0>Non-white</option>
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Workclass:</label>
+				  <select class="form-control" id="query9" name="query9" required>{{query9}}
+               <option value=1>Private</option>
+               <option value=0>Non-Private</option>
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Capital-Gain:</label>
+				  <input class="form-control" id="query10" name="query10" required>{{query10}}</input>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Capital-Loss:</label>
+				  <input class="form-control" id="query11" name="query11" required>{{query11}}</input>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Hours-Per-Week:</label>
+				  <select class="form-control" id="query12" name="query12" required>{{query12}}
+               <option value=1>>40 hours</option>
+               <option value=0><=40 hours</option>
+              </select>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">Country:</label>
+				  <select class="form-control" id="query13" name="query13" required>{{query13}}
+               <option value=1>United-States</option>
+               <option value=0>Non-US</option>
+              </select>
+			</div>
+			</div>
+			<div class="col-sm-3">
+			<button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
+			</div>
+		  </form>
+		  </div>
+		  
+		<div class="row"> 
+			<div class="col-sm-9">
+			<textarea class="form-control" rows="2" id="comment" name="query6" rows="2" cols="5" autofocus>{{output1}}</textarea>
+			<textarea class="form-control" rows="2" id="comment" name="query7" rows="2" cols="5" autofocus>{{output2}}</textarea>
+			</div>
+		</div>
+	</div>		
+   </body>
+</html>

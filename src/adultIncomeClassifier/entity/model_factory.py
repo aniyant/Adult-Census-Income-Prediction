@@ -4,9 +4,6 @@ from pyexpat import model
 import numpy as np
 import yaml
 import os
-import sys
-from dataclasses import dataclass
-from typing import Any
 from collections import namedtuple
 from typing import List
 from adultIncomeClassifier import logger
@@ -23,13 +20,6 @@ SEARCH_PARAM_GRID_KEY = "search_param_grid"
 InitializedModelDetail = namedtuple("InitializedModelDetail",
                                     ["model_serial_number", "model", "param_grid_search", "model_name"])
 
-@dataclass(frozen=True)
-class InitializedModelDetail:
-    model_serial_number: Any
-    model: Any
-    param_grid_search: Any
-    model_name: Any
-
 GridSearchedBestModel = namedtuple("GridSearchedBestModel", ["model_serial_number",
                                                              "model",
                                                              "best_model",
@@ -37,13 +27,6 @@ GridSearchedBestModel = namedtuple("GridSearchedBestModel", ["model_serial_numbe
                                                              "best_score",
                                                              ])
 
-@dataclass(frozen=True)
-class GridSearchedBestModel:
-    model_serial_number: Any
-    model: Any
-    best_model: Any
-    best_parameters: Any
-    best_score: Any
 
 BestModel = namedtuple("BestModel", ["model_serial_number",
                                      "model",
@@ -51,14 +34,6 @@ BestModel = namedtuple("BestModel", ["model_serial_number",
                                      "best_parameters",
                                      "best_score", ]
                                      )
-@dataclass(frozen=True)
-class BestModel:
-    model_serial_number: Any
-    model: Any
-    best_model: Any
-    best_parameters: Any
-    best_score: Any
-
 
 MetricInfoArtifact = namedtuple("MetricInfoArtifact",
                                 ["model_name", "model_object", "train_matrix", "test_matrix", "train_accuracy",
@@ -94,7 +69,6 @@ def evaluate_classification_model(model_list: list, X_train:np.ndarray, y_train:
             logger.info(f"{'>>'*5}Started evaluating model: [{type(model).__name__}] {'<<'*5}")
             
             #Getting prediction for training and testing dataset
-            print
             y_train_pred = model.predict(X_train)
             y_test_pred = model.predict(X_test)
 

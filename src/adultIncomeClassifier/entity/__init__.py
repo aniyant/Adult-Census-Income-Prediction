@@ -3,9 +3,7 @@ from adultIncomeClassifier.entity.config_entity import (
     DataValidationConfig,
     DataTransformationConfig,
     ModelTrainerConfig,
-)
-from adultIncomeClassifier.entity.artifact_entity import (
-    DataIngestionArtifact
+    ModelEvaluationConfig,
 )
 
 from adultIncomeClassifier.entity.model_factory import (
