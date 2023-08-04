@@ -71,7 +71,7 @@ def predict():
     for col in ['age','fnlwgt','education-num','capital-gain','capital-loss','hours-per-week']:
         df[col] = df[col].astype('int64')
 
-    logger.info(df.values)
+    #logger.info(df.values)
     output = model.predict(df)
 
     

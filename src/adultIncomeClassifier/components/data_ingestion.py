@@ -2,7 +2,6 @@ import os
 import gdown
 from zipfile import ZipFile
 from adultIncomeClassifier.entity import DataIngestionConfig
-from adultIncomeClassifier.entity import DataIngestionArtifact
 from adultIncomeClassifier import logger
 from adultIncomeClassifier.utils import get_size
 from pathlib import Path
